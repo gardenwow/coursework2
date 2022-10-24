@@ -1,24 +1,23 @@
 package com.example.coursework2.number2.Controller;
 
-import com.example.coursework2.number2.Service.ExaminerServiceImpl;
-import com.example.coursework2.number2.Service.Question;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.coursework2.number2.Service.ExaminerService;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.List;
 
 @RestController
+@RequestMapping("/get")
 public class ExaminerController {
-    private final ExaminerServiceImpl examinerServiceImp;
 
-    public ExaminerController(ExaminerServiceImpl examinerServiceImp) {
-        this.examinerServiceImp = examinerServiceImp;
+    private final ExaminerService examinerService;
+
+    public ExaminerController(ExaminerService examinerService) {
+        this.examinerService = examinerService;
     }
-    @GetMapping(path = "/exam1/get")
-    public Collection<String> getQuestions(@RequestParam(name = "count") int count) {
-        return examinerServiceImp.getQuestions(count);
+
+    @GetMapping(path = "{count}")
+    public Collection<String> getQuestions(@PathVariable("count") int count) {
+        return examinerService.getQuestions(count);
     }
 
 }

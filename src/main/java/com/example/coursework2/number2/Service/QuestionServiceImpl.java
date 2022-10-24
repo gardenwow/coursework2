@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class QuestionServiceImpl implements QuestionServiceInterf {
-    List<Question> questions = new ArrayList<>(List.of(
+   private final List<Question> questions = new ArrayList<>(List.of(
             new Question("How are you?", "good"),
             new Question("what are u doing?", "relax man, i`m played doka2"),
             new Question("doka2? what?", "yes, i dont know, just fun")));
